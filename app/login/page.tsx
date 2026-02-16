@@ -6,10 +6,9 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Plane, MapPin, Globe, Palmtree, Compass } from  "lucide-react"
-;
-// import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
+import { Plane, MapPin, Globe, Palmtree, Compass } from "lucide-react";
+import Image from "next/image";
+
 export default function Login() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -23,11 +22,9 @@ export default function Login() {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Get Firebase token and set cookie
       const token = await user.getIdToken();
       document.cookie = `firebase-token=${token}; path=/; max-age=3600`;
 
-      // Save user in Firestore
       await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name: user.displayName,
@@ -47,12 +44,16 @@ export default function Login() {
 
   return (
     <div className="relative flex h-screen w-full overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <ImageWithFallback
-          src="https://images.unsplash.com/photo-1660207768602-f6327ae51d82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cm9waWNhbCUyMGJlYWNoJTIwcGFyYWRpc2UlMjB0cmF2ZWx8ZW58MXx8fHwxNzcwOTc0MjY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      {/* Gradient Background (shows immediately) */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
+        {/* Image loads in background without blocking */}
+        <Image
+          src="https://images.unsplash.com/photo-1660207768602-f6327ae51d82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=75&w=1920"
           alt="Travel background"
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover opacity-60"
+          priority
+          quality={75}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600/40 via-pink-500/40 to-orange-400/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />

@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
     "http://192.168.0.100:3000",
   ],
   
+  // Allow Unsplash images
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
+  
   // Add headers to fix COOP warning
   async headers() {
     return [
