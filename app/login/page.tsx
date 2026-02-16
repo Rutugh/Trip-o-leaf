@@ -48,7 +48,9 @@ export default function Login() {
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400">
         {/* Image loads in background without blocking */}
         <Image
-          src="https://images.unsplash.com/photo-1660207768602-f6327ae51d82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=75&w=1920"
+
+          // src="https://images.unsplash.com/photo-1660207768602-f6327ae51d82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=75&w=1920"
+          src="/images/img1.jpg"
           alt="Travel background"
           fill
           className="object-cover opacity-60"
