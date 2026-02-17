@@ -371,27 +371,42 @@ export default function Dashboard() {
                       </div>
                     )}
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-2">
-                      {isOwner && (
-                        <button
-                          onClick={() => handleShareClick(trip)}
-                          className="flex-1 bg-purple-50 hover:bg-purple-100 text-purple-600 py-2 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group/share"
-                        >
-                          <Share2 className="w-4 h-4 group-hover/share:scale-110 transition-transform" />
-                          <span className="text-sm font-medium">Share</span>
-                        </button>
-                      )}
-                      {isOwner && (
-                        <button
-                          onClick={() => handleDelete(trip.id!)}
-                          className="flex-1 bg-red-50 hover:bg-red-100 text-red-600 py-2 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group/delete"
-                        >
-                          <Trash2 className="w-4 h-4 group-hover/delete:scale-110 transition-transform" />
-                          <span className="text-sm font-medium">Delete</span>
-                        </button>
-                      )}
-                    </div>
+                    {/* // ─── Replace your trip card action buttons section in dashboard/page.tsx ───
+// Find the "Action Buttons" comment block and replace it with this: */}
+
+{/* Action Buttons */}
+<div className="flex gap-2">
+  {/* 🆕 View Map button — routes to full trip planner */}
+  <button
+    onClick={() => router.push(`/trip/${trip.id}`)}
+    className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-2 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 shadow-md"
+  >
+    <MapPin className="w-4 h-4" />
+    <span className="text-sm font-semibold">Plan on Map</span>
+  </button>
+
+  {isOwner && (
+    <button
+      onClick={() => handleShareClick(trip)}
+      className="flex-1 bg-purple-50 hover:bg-purple-100 text-purple-600 py-2 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group/share"
+    >
+      <Share2 className="w-4 h-4 group-hover/share:scale-110 transition-transform" />
+      <span className="text-sm font-medium">Share</span>
+    </button>
+  )}
+  {isOwner && (
+    <button
+      onClick={() => handleDelete(trip.id!)}
+      className="bg-red-50 hover:bg-red-100 text-red-600 px-3 py-2 rounded-xl transition-all duration-300 flex items-center justify-center group/delete"
+    >
+      <Trash2 className="w-4 h-4 group-hover/delete:scale-110 transition-transform" />
+    </button>
+  )}
+</div>
+
+{/* // ─── Also add MapPin to your imports at top of dashboard ───────────────────
+// import { ..., MapPin } from "lucide-react";  ← already there ✅
+// Make sure `router` is available — it already is from useRouter() ✅ */}
                   </div>
                 );
               })}

@@ -29,6 +29,7 @@ export interface Trip {
   sharedWith: string[]; // Array of emails
   splitCount?: number;
   createdAt?: Timestamp;
+  stops?: Stop[];
 }
 
 // ✅ Create Real Trip
@@ -137,3 +138,18 @@ export const getTrips = async (user: any): Promise<Trip[]> => {
 export const deleteTrip = async (tripId: string) => {
   await deleteDoc(doc(db, "trips", tripId));
 };
+//stops update
+export interface Stop {
+  id: string;
+  name: string;
+  address: string;
+  lat: number;
+  lng: number;
+  category: "attraction" | "hotel" | "restaurant" | "cafe" | "shopping" | "custom";
+  note?: string;
+  placeId?: string;
+  rating?: number;
+  photo?: string;
+}
+ 
+// Stops are saved directly from the Trip Detail page via updateDoc()
