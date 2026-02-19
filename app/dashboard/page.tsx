@@ -448,7 +448,7 @@ export default function Dashboard() {
                   type="text"
                   placeholder="e.g., Tokyo Adventure"
                   required
-                  className="w-full border-2 border-purple-200 focus:border-purple-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none"
+                  className="w-full border-2 border-purple-200 focus:border-purple-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none text-purple-600"
                   value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
                 />
@@ -463,7 +463,7 @@ export default function Dashboard() {
                   type="text"
                   placeholder="Where to?"
                   required
-                  className="w-full border-2 border-pink-200 focus:border-pink-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none"
+                  className="w-full border-2 border-pink-200 focus:border-pink-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none text-pink-600"
                   value={form.destination}
                   onChange={(e) => setForm({ ...form, destination: e.target.value })}
                 />
@@ -478,7 +478,7 @@ export default function Dashboard() {
                   <input
                     type="date"
                     required
-                    className="w-full border-2 border-blue-200 focus:border-blue-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none"
+                    className="w-full border-2 border-blue-200 focus:border-blue-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none text-blue-600"
                     value={form.startDate}
                     onChange={(e) => setForm({ ...form, startDate: e.target.value })}
                   />
@@ -492,7 +492,7 @@ export default function Dashboard() {
                   <input
                     type="date"
                     required
-                    className="w-full border-2 border-orange-200 focus:border-orange-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none"
+                    className="w-full border-2 border-orange-200 focus:border-orange-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none text-orange-600"
                     value={form.endDate}
                     onChange={(e) => setForm({ ...form, endDate: e.target.value })}
                   />
@@ -507,10 +507,11 @@ export default function Dashboard() {
                 <input
                   type="number"
                   required
-                  placeholder="₹ 0"
-                  className="w-full border-2 border-green-200 focus:border-green-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none"
+                  placeholder="In dollars"
+                  className="w-full border-2 border-green-200 focus:border-green-500 p-3 rounded-xl bg-white/50 backdrop-blur-sm transition-all outline-none text-green-600"
                   value={form.budget}
                   onChange={(e) => setForm({ ...form, budget: Number(e.target.value) })}
+                  
                 />
               </div>
 
